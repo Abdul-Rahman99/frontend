@@ -29,7 +29,7 @@ export default function ProfilePage() {
 
   const fetchUserProfile = async (token: string) => {
     try {
-      const response = await fetch("http://localhost:3000/users/profile", {
+      const response = await fetch("http://localhost:7000/auth/profile", {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -46,7 +46,7 @@ export default function ProfilePage() {
       }
 
       const userData = await response.json();
-      setUser(userData);
+      setUser(userData.data);
     } catch (err: any) {
       setError(err.message || "Something went wrong");
     } finally {
